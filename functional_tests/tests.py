@@ -7,8 +7,6 @@ import unittest
 
 class NewVisitorTest(LiveServerTestCase):
 
-    MAX_WAIT = 10
-
     def setUp(self):
         self.browser = webdriver.Firefox()
 
@@ -16,6 +14,7 @@ class NewVisitorTest(LiveServerTestCase):
         self.browser.quit()
 
     def wait_for_row_in_list_table(self, row_text):
+        MAX_WAIT = 10
         start_time = time.time()
 
         while True:
@@ -65,7 +64,29 @@ class NewVisitorTest(LiveServerTestCase):
         self.wait_for_row_in_list_table('1: Buy peacock feathers')
 
         edith_list_url = self.browser.current_url
-        self.assertRegex(edith_list_url '/lists/.+')
+        self.assertRegex(edith_list_url, '/lists/.+')
+
+        self.browser.quit()
+        self.browser = webdriver.Firefox()
+
+        self.browser.get(self.live_server_url)
+        page_text = self.browser.find_element_by_tag_name('body').text
+        
+        self.assertNotIn('Buy peacock feathers', page_text)
+        self.assertNotIn('make a fly', page_text)
+
+        inputbox = self.browser.find_element_by_id('id_new_item')
+        inputbox.send_keys('Buy milk')
+        inputbox.send_keys(Keys.ENTER)
+        self.wait_for_row_in_list_table('1: Buy milk')
+
+        francis_list_url = self.browser.curent_url
+        self.assertRegex(francis_list_url, '/lists/.+')
+        self.assertNotEqual(edith_list_url, fracis_list_url)
+
+        page_text = self.browser.find_element_by_tag_name('body').text
+        self.assertNotIn('Buy peacock feathers', page_text)
+        self.assertIn('Buy milk', page_text)
 
 if __name__ == '__main__':
     unittest.main(warnings='ignore')
