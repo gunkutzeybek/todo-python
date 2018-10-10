@@ -3,5 +3,4 @@ geckodriver.log
 virtualenv
 __pycache__
 *.pyc
-lists/migrations/
 /static
