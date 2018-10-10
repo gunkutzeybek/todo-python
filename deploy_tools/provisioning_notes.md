@@ -32,13 +32,13 @@ Assume we have a user account at /home/username
 /home/username
 ├── sites
     ├── DOMAIN1
-    ├   ├── .env
-    ├   ├── db.sqlite3
-    ├   ├── manage.py etc
-    ├   ├── static 
-    ├   ├── virtualenv
+    │   ├── .env
+    │   ├── db.sqlite3
+    │   ├── manage.py etc
+    │   ├── static 
+    │   ├── virtualenv
     ├── DOMAIN2
-    ├   ├── .env
-    ├   ├── db.sqlite3
-    ├   ├── etc 
+    │   ├── .env
+    │   ├── db.sqlite3
+    │   ├── etc 
 ```
