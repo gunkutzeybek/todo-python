@@ -28,15 +28,17 @@ eg, on Ubuntu:
 
 Assume we have a user account at /home/username
 
+´´´bash
 /home/username
-|__ sites
-    |__ DOMAIN1
-    |   |__ .env
-    |   |__ db.sqlite3
-    |   |__ manage.py etc
-    |   |__ static 
-    |   |__ virtualenv
-    |__ DOMAIN2
-    |   |__ .env
-    |   |__ db.sqlite3
-    |   |__ etc 
+├── sites
+    ├── DOMAIN1
+    ├   ├── .env
+    ├   ├── db.sqlite3
+    ├   ├── manage.py etc
+    ├   ├── static 
+    ├   ├── virtualenv
+    ├── DOMAIN2
+    ├   ├── .env
+    ├   ├── db.sqlite3
+    ├   ├── etc 
+´´´
