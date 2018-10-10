@@ -28,7 +28,7 @@ eg, on Ubuntu:
 
 Assume we have a user account at /home/username
 
-´´´bash
+```bash
 /home/username
 ├── sites
     ├── DOMAIN1
@@ -41,4 +41,4 @@ Assume we have a user account at /home/username
     ├   ├── .env
     ├   ├── db.sqlite3
     ├   ├── etc 
-´´´
+```
