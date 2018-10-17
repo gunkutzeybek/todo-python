@@ -14,7 +14,7 @@
                 <div class="col-md-6 col-md-offset-3 jumbotron">
                     <div class="text-center">
                         <h1>{% block header_text %}{% endblock %}</h1>
-                        <form method="POST" action="{% block form_action %}{% endblock %}">
+                        <form method="POST" action="{% block form_action %}{% url 'new_list' %}{% endblock %}">
                             <input id="id_new_item" class="form-control input-lg" placeholder="Enter a to-do item" name="item_text" />
                             {% csrf_token %}
                             {% if error %}
