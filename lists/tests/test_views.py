@@ -3,6 +3,7 @@ from django.urls import resolve
 from lists.models import Item, List
 from django.utils.html import escape
 from lists.views import home_page 
+from lists.forms import ItemForm
 
 class HomePageTest(TestCase):
     Client = Client()
@@ -11,13 +12,17 @@ class HomePageTest(TestCase):
         found = resolve("/")
         self.assertEqual(found.func, home_page)
 
-    def test_home_page_returns_correct_html(self):
+    def test_uses_home_template(self):
         response = self.Client.get('/')
         self.assertTemplateUsed(response, 'home.html')
 
     def test_only_saves_items_when_necessary(self):
         self.Client.get('/')
         self.assertEqual(Item.objects.count(), 0)
+
+    def test_home_page_uses_item_form(self):
+        response = self.Client.get('/')
+        self.assertIsInstance(response.context['form'], ItemForm)
 
 class ListViewTest(TestCase):
     Client = Client()
